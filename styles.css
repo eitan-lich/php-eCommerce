@@ -1,0 +1,33 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.navbar {
+    display:flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.navbar-item a {
+    text-decoration: none;
+    color: #111;
+    cursor: pointer;
+    margin:10px;
+    font-size: 25px;
+
+}
+
+#search-bar {
+    border-radius: 20px;
+    text-align: center;
+    border: none 0px white;
+    background-color: bisque;
+    height:35px;
+    width:150px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#search-bar:focus {
+    outline-color: blue;
+}
