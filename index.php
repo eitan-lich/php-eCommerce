@@ -20,7 +20,7 @@
         <ul class="navbar">
             <li class="navbar-item"><a href="#">Home</a></li>
             <li class="navbar-item"><a href="about.php">About</a></li>
-            <li class="navbar-item"><a href="login.php">Login</a></li>
+            <li class="navbar-item"><a href="login.php">Login/Register</a></li>
             <li>
                 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
                     <input id="search-bar" type="text" name="item" placeholder="Search">
@@ -32,6 +32,42 @@
                 </form>
             </li>
         </ul>
+    </nav>
+    <main>
+        <div class="items">
+            <?php
+
+            if (!empty($_POST['item'])) {
+                $desired_item = $_POST["item"];
+                $statement = "SELECT * FROM items WHERE item_name LIKE '%$desired_item%'";
+                $query_result = mysqli_query($con, $statement);
+                while ($row = mysqli_fetch_array($query_result)) {
+                    echo "<div class='item-container'>
+                        <img src='$row[5]'>
+                        <h1>$row[1]</h1>
+                        <h2>$$row[2]</h2>
+                        <h2>$row[3]</h2>
+                        <p>SKU - $row[4]</p>
+                        <p>$row[6]</p>
+                        </div>";
+                }
+            } else {
+                $statement = "SELECT * FROM items";
+                $query_result = mysqli_query($con, $statement);
+                while ($row = mysqli_fetch_array($query_result)) {
+                    echo "<div class='item-container'>
+                        <img src='$row[5]'>
+                        <h1>$row[1]</h1>
+                        <h2>$$row[2]</h2>
+                        <h2>$row[3]</h2>
+                        <p>SKU - $row[4]</p>
+                        <p>$row[6]</p>
+                        </div>";
+                }
+            }
+            ?>
+        </div>
+    </main>
 </body>
 
 </html>
