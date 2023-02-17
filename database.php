@@ -6,7 +6,4 @@ define("PASSWORD","");
 define("DB","shop");
 
 
-$con = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DB);
-
-
 ?>
