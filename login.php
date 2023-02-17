@@ -16,29 +16,31 @@
 </head>
 
 <body>
-    <form action="signup.php" method="POST">
-        <h1>First time here? no problem we'll set you up in a second</h1>
-        <label>
-            Username
-            <input type="text" name="new-username" placeholder="username">
-        </label>
-        <label> Password
-            <input type="password" name="new-password" placeholder="password">
-        </label>
-        <button>Sign up</button>
-    </form>
+    <div class="auth-form-container">
+        <form class="auth-form" action="signup.php" method="POST">
+            <h1>First time here? no problem we'll set you up in a second</h1>
+            <label>
+                Username
+                <input type="text" name="new-username">
+            </label>
+            <label> Password
+                <input type="password" name="new-password">
+            </label>
+            <button>Sign up</button>
+        </form>
 
-    <form action="login.php" method="POST">
-        <h1>Already have an account?</h1>
-        <label>
-            Username
-            <input type="text" name="existing-username" placeholder="username">
-        </label>
-        <label> Password
-            <input type="password" name="existing-password" placeholder="password">
-        </label>
-        <button>Login</button>
-    </form>
+        <form class="auth-form" action="signin.php" method="POST">
+            <h1>Already have an account?</h1>
+            <label>
+                Username
+                <input type="text" name="existing-username">
+            </label>
+            <label> Password
+                <input type="password" name="existing-password">
+            </label>
+            <button>Login</button>
+        </form>
+    </div>
 </body>
 
 </html>
