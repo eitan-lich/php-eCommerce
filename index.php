@@ -37,6 +37,8 @@
         <div class="items">
             <?php
 
+            $con = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DB);
+
             if (!empty($_POST['item'])) {
                 $desired_item = $_POST["item"];
                 $statement = "SELECT * FROM items WHERE item_name LIKE '%$desired_item%'";
@@ -48,7 +50,8 @@
                         <h2>$$row[2]</h2>
                         <h2>$row[3]</h2>
                         <p>SKU - $row[4]</p>
-                        <p>$row[6]</p>
+                        <button class='see-more-btn'>See more</button>
+                        <p class='item-description'>$row[6]</p>
                         </div>";
                 }
             } else {
@@ -61,13 +64,15 @@
                         <h2>$$row[2]</h2>
                         <h2>$row[3]</h2>
                         <p>SKU - $row[4]</p>
-                        <p>$row[6]</p>
+                        <button class='see-more-btn'>See more</button>
+                        <p class='item-description'>$row[6]</p>
                         </div>";
                 }
             }
             ?>
         </div>
     </main>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
