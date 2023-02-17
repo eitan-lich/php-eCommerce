@@ -1,5 +1,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
+    background-color:  #393e46; 
+    color: #FFF;
 }
 
 
@@ -11,26 +13,23 @@ body {
 
 .navbar-item a {
     text-decoration: none;
-    color: #111;
+    color: #FFF;
     cursor: pointer;
     margin:10px;
     font-size: 25px;
 
 }
 
-#search-bar {
+#search-bar, .auth-form input {
     border-radius: 20px;
     text-align: center;
     border: none 0px white;
-    background-color: bisque;
+	background-color: #222831; 
     height:35px;
     width:150px;
     font-family: 'Open Sans', sans-serif;
 }
 
-#search-bar:focus {
-    outline-color: blue;
-}
 
 .items {
     display:flex;
@@ -40,9 +39,30 @@ body {
 .item-container {
     width:25%;
     border: 1px solid rgb(205, 200, 200);
+    background-color:#f2f2f2 ;
+    color:#222831;
 }
 
 .item-container img {
     width:250px;
     height:200px;
+}
+
+
+.auth-form {
+    display:flex;
+    flex-direction: column;
+    width:50%;
+    margin:25px;
+    border:1px solid #f96d00;
+    padding:10%;
+}
+
+.auth-form button {
+    width:35%;
+}
+
+.auth-form-container {
+    width:100%;
+    display:flex;
 }
