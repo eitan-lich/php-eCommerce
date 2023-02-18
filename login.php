@@ -1,4 +1,5 @@
-<?php require "database.php" ?>
+<?php session_start();
+require "database.php" ?>
 
 
 <!DOCTYPE html>
@@ -16,6 +17,23 @@
 </head>
 
 <body>
+    <nav>
+        <ul class="navbar">
+            <li class="navbar-item"><a href="index.php">Home</a></li>
+            <li class="navbar-item"><a href="about.php">About</a></li>
+            <li class="navbar-item"><a href="#">Login/Register</a></li>
+            <li>
+                <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
+                    <input id="search-bar" type="text" name="item" placeholder="Search">
+                    <button>
+                        <svg aria-hidden="true" class="pre-nav-design-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+                            <path stroke="currentColor" stroke-width="1.5" d="M13.962 16.296a6.716 6.716 0 01-3.462.954 6.728 6.728 0 01-4.773-1.977A6.728 6.728 0 013.75 10.5c0-1.864.755-3.551 1.977-4.773A6.728 6.728 0 0110.5 3.75c1.864 0 3.551.755 4.773 1.977A6.728 6.728 0 0117.25 10.5a6.726 6.726 0 01-.921 3.407c-.517.882-.434 1.988.289 2.711l3.853 3.853"></path>
+                        </svg>
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </nav>
     <div class="auth-form-container">
         <form class="auth-form" action="signup.php" method="POST">
             <h1>First time here? no problem we'll set you up in a second</h1>

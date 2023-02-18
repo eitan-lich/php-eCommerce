@@ -1,4 +1,5 @@
-<?php require "database.php" ?>
+<?php session_start();
+require "database.php" ?>
 
 
 <!DOCTYPE html>
@@ -20,7 +21,17 @@
         <ul class="navbar">
             <li class="navbar-item"><a href="#">Home</a></li>
             <li class="navbar-item"><a href="about.php">About</a></li>
-            <li class="navbar-item"><a href="login.php">Login/Register</a></li>
+            <li class="navbar-item">
+                <?php
+                if (isset($_SESSION["logged-in"]) && $_SESSION["logged-in"] == true) {
+                    echo "<a href='logout.php'>Logout</a></li>
+                    <li class='navbar-item'><a href='addItem.php'>Add or remove an item</a></li>
+                    <li class='navbar-item'><a href='#'>Welcome back <span style='text-decoration:underline;'>" . $_SESSION['name'] . "</span></a></li>";
+                } else {
+                    echo "<a href='login.php'>Login/Register</a></li>
+                    <li class='navbar-item'><a href='#'>Welcome back <span style='text-decoration:underline;'>Guest</span></li></a>";
+                } ?>
+
             <li>
                 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
                     <input id="search-bar" type="text" name="item" placeholder="Search">
@@ -72,7 +83,7 @@
             ?>
         </div>
     </main>
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
