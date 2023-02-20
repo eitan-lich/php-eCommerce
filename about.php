@@ -15,6 +15,7 @@
 <body>
     <?php echo "<button id='test'>OK</button>" ?>
     <script src="script.js"></script>
+    <?php header("Location:index.php")?>
 </body>
 
 </html>
