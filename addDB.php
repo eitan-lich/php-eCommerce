@@ -23,4 +23,5 @@ if (isset(
     $query = "INSERT INTO items(ID, item_name, item_price,item_manufacturer,item_sku,item_image,item_description) VALUES(null,'$item_name','$item_price',
     '$item_manu','$item_sku','$item_image','$item_desc')";
     mysqli_query($con, $query);
+    header("Location:index.php");
 }

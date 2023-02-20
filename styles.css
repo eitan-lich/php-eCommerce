@@ -1,7 +1,14 @@
+:root {
+    --main-text-color:#40514E;
+    --navbar-bg-color:#edf1f4;
+}
+
+
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color:  #393e46; 
-    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    color: var(--main-text-color); 
+    margin:0;
+
 }
 
 
@@ -9,39 +16,47 @@ body {
     display:flex;
     justify-content: center;
     list-style: none;
+    background-color: var(--navbar-bg-color);
+    margin: 0;
+    padding:10px;
 }
 
 .navbar-item a {
     text-decoration: none;
-    color: #FFF;
     cursor: pointer;
+    color: var(--main-text-color);
     margin:10px;
     font-size: 25px;
+    font-weight: 700;
 
 }
 
 #search-bar, .auth-form input {
-    border-radius: 20px;
-    text-align: center;
-    border: none 0px white;
-	background-color: #222831; 
-    height:35px;
-    width:150px;
-    font-family: 'Open Sans', sans-serif;
-    color:white;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    color: var(--main-text-color);
+    background: transparent;
+    outline: 0;
+    font-size: 10px;
+    cursor: text;
+    transition: border-color 0.2s;
+    margin:2%;
 }
 
+#search-bar:focus, .auth-form input:hover {
+    border-color: #27ae60;
+}
 
 .items {
     display:flex;
+    margin:5px;
 }
-
 
 .item-container {
     width:25%;
     border: 1px solid rgb(205, 200, 200);
-    background-color:#f2f2f2 ;
-    color:#222831;
+    color:var(--main-text-color);
+    padding:15px;
 }
 
 .item-container img {
@@ -49,21 +64,69 @@ body {
     height:200px;
 }
 
+.item-container button {
+    cursor:pointer;
+    border:none;
+    text-transform: uppercase;
+    padding:10px;
+    color:white;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.see-more-btn {
+    background-color:  #3498db;
+}
+
+.see-more-btn:hover {
+    background-color: #2980b9;
+}
+
+.add-cart-btn {
+    background-color: #2ecc71;
+}
+
+.add-cart-btn:hover {
+    background-color: #27ae60;
+}
 
 .auth-form {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    width:50%;
     margin:25px;
     border:1px solid #f96d00;
-    padding:10%;
+    padding:5%;
 }
+
 
 .auth-form button {
     width:35%;
 }
 
 .auth-form-container {
-    width:100%;
     display:flex;
 }
+
+#add-btn {
+    cursor:pointer;
+    border:none;
+    text-transform: uppercase;
+    padding:10px;
+    color:white;
+    font-weight: 500;
+    text-decoration: dashed;
+}
+
+.item-wrapper {
+    display:flex;
+    justify-content: center;
+}
+
+.item-form input, .item-form textarea {
+    display:flex;
+    flex-direction: column;
+    margin:10px;
+    padding:10px;
+}
+
+

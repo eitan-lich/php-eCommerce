@@ -1,9 +1,12 @@
 let seeMoreBtns = document.querySelectorAll(".see-more-btn");
 let itemDescriptions = document.querySelectorAll(".item-description");
+let cartBtns = document.querySelectorAll(".add-cart-btn");
+let cart = document.getElementById("cart-items");
 
 
 
 itemDescriptions.forEach((description=>description.style.display="none"));
+
 
 for(let i=0;i<itemDescriptions.length;i++) {
     seeMoreBtns[i].addEventListener("click", () => {
@@ -16,4 +19,5 @@ for(let i=0;i<itemDescriptions.length;i++) {
         }
     })
 };
+
 
