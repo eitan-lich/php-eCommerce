@@ -1,6 +1,7 @@
 :root {
     --main-text-color:#40514E;
     --navbar-bg-color:#edf1f4;
+    --navbar-li-hover:rgb(68, 177, 255);
 }
 
 
@@ -11,14 +12,15 @@ body {
 
 }
 
-
 .navbar {
     display:flex;
-    justify-content: center;
-    list-style: none;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    list-style-type: none;
     background-color: var(--navbar-bg-color);
-    margin: 0;
     padding:10px;
+    padding-top: 25px;
+    margin:0;
 }
 
 .navbar-item a {
@@ -28,7 +30,11 @@ body {
     margin:10px;
     font-size: 25px;
     font-weight: 700;
+    transition: color 0.5s;
+}
 
+.navbar-item a:hover {
+    color:var(--navbar-li-hover);
 }
 
 #search-bar, .auth-form input {
@@ -37,7 +43,7 @@ body {
     color: var(--main-text-color);
     background: transparent;
     outline: 0;
-    font-size: 10px;
+    font-size: 20px;
     cursor: text;
     transition: border-color 0.2s;
     margin:2%;
@@ -47,21 +53,46 @@ body {
     border-color: #27ae60;
 }
 
+
+.wrapper-search {
+    position: relative;
+}
+
+#search-button {
+    top:0;
+    right:0;
+    color: #fff;
+    border: 2px solid;
+    cursor: pointer;
+    height: 30px;
+    outline: none;
+    padding: 0 25px;
+    position: absolute;
+    background: #0b6bb6;
+    border-color: #0b6bb6;
+    transition: background-color 0.5s, border-color 0.5s;
+}
+
+#search-button:hover {
+    background-color: #064474;
+    border-color:#064474;
+}
+
 .items {
     display:flex;
     margin:5px;
 }
 
 .item-container {
-    width:25%;
+    width:auto;
     border: 1px solid rgb(205, 200, 200);
     color:var(--main-text-color);
     padding:15px;
+    width:350px;
 }
 
 .item-container img {
-    width:250px;
-    height:200px;
+    width: 50%;
 }
 
 .item-container button {
@@ -101,13 +132,14 @@ body {
 
 .auth-form button {
     width:35%;
+    background-color: #2ecc71;
 }
 
 .auth-form-container {
     display:flex;
 }
 
-#add-btn {
+#add-btn, .auth-form button {
     cursor:pointer;
     border:none;
     text-transform: uppercase;
