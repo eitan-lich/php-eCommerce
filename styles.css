@@ -80,6 +80,7 @@ body {
 
 .items {
     display:flex;
+    flex-wrap: wrap;
     margin:5px;
 }
 
@@ -160,5 +161,33 @@ body {
     margin:10px;
     padding:10px;
 }
+
+
+.cart-container {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 1px solid rgb(205, 200, 200);
+    color:var(--main-text-color);
+}
+
+
+.cart-container img {
+    width: 25%;
+    height:25%;
+}
+
+.cart-container button {
+    cursor:pointer;
+    border:none;
+    text-transform: uppercase;
+    padding:10px;
+    color:white;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
 
 
