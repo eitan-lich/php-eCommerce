@@ -5,13 +5,10 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
     $added_item = $_POST['item_id'];
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = array($added_item);
-        print_r($_SESSION['cart']);
     } else {
         if(!in_array($added_item, $_SESSION['cart'])) {
             array_push($_SESSION['cart'], $added_item);
-            print_r($_SESSION['cart']);
         } else {
-            print_r($_SESSION['cart']);
             echo "Item already added to cart";
         }
     }
@@ -64,7 +61,7 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
                     </div>
                 </form>
             </li>
-            <li class="navbar-item"><a href="cart.php"><img src="https://www.allphptricks.com/demo/2018/july/simple-shopping-cart-php/cart-icon.png"><?php echo count($_SESSION['cart']) ?></a></li>
+            <li class="navbar-item"><a href="cart.php"><img src="https://www.allphptricks.com/demo/2018/july/simple-shopping-cart-php/cart-icon.png"><?php if(isset($_SESSION['cart'])) echo count($_SESSION['cart']) ?></a></li>
         </ul>
     </nav>
     <main>
