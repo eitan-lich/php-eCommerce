@@ -1,5 +1,25 @@
 <?php session_start();
-require "database.php" ?>
+require "database.php";
+
+if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
+    $added_item = $_POST['item_id'];
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = array($added_item);
+        print_r($_SESSION['cart']);
+    } else {
+        if(!in_array($added_item, $_SESSION['cart'])) {
+            array_push($_SESSION['cart'], $added_item);
+            print_r($_SESSION['cart']);
+        } else {
+            print_r($_SESSION['cart']);
+            echo "Item already added to cart";
+        }
+    }
+}
+
+
+
+?>
 
 
 <!DOCTYPE html>
@@ -19,7 +39,7 @@ require "database.php" ?>
 <body>
     <nav>
         <ul class="navbar">
-            <li class="navbar-item"><a href="#">Home</a></li>
+            <li class="navbar-item"><a href="">Home</a></li>
             <li class="navbar-item"><a href="about.php">About</a></li>
             <li class="navbar-item">
                 <?php
@@ -33,7 +53,7 @@ require "database.php" ?>
                 } ?>
 
             <li>
-                <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
+                <form action="<?php $_SERVER['PHP_SELF']; ?>" method="GET">
                     <div class="wrapper-search">
                         <input id="search-bar" type="text" name="item" placeholder="Search">
                         <button id="search-button">
@@ -44,6 +64,7 @@ require "database.php" ?>
                     </div>
                 </form>
             </li>
+            <li class="navbar-item"><a href="cart.php"><img src="https://www.allphptricks.com/demo/2018/july/simple-shopping-cart-php/cart-icon.png"><?php echo count($_SESSION['cart']) ?></a></li>
         </ul>
     </nav>
     <main>
@@ -52,36 +73,43 @@ require "database.php" ?>
 
             $con = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DB);
 
-            if (!empty($_POST['item'])) {
-                $desired_item = $_POST["item"];
+            if (!empty($_GET['item'])) {
+                $desired_item = $_GET["item"];
                 $statement = "SELECT * FROM items WHERE item_name LIKE '%$desired_item%'";
                 $query_result = mysqli_query($con, $statement);
-                while ($row = mysqli_fetch_array($query_result)) {
-                    echo "<div class='item-container'>
-                        <img src='$row[5]'>
-                        <h1>$row[1]</h1>
-                        <h2>$$row[2]</h2>
-                        <h2>$row[3]</h2>
-                        <p>UPC - $row[4]</p>
-                        <button class='see-more-btn'>See more</button>
+                while ($row = mysqli_fetch_assoc($query_result)) {
+                    echo "<form action='' method='post'>
+                    <div class='item-container'>
+                    <input type='hidden' name='item_id' value='.$row[ID]'>
+                        <img src='$row[item_image]'>
+                        <h1>$row[item_name]</h1>
+                        <h2>$$row[item_price]</h2>
+                        <h2>$row[item_manufacturer]</h2>
+                        <p>UPC - $row[item_upc]</p>
+                        <button type='button' class='see-more-btn'>See more</button>
                         <button class='add-cart-btn'>Add to cart</button>
-                        <p class='item-description'>$row[6]</p>
-                        </div>";
+                        <p class='item-description'>$row[item_description]</p>
+                        </div>
+                        </form>";
                 }
             } else {
                 $statement = "SELECT * FROM items";
                 $query_result = mysqli_query($con, $statement);
-                while ($row = mysqli_fetch_array($query_result)) {
-                    echo "<div class='item-container'>
-                        <img src='$row[5]'>
-                        <h1>$row[1]</h1>
-                        <h2>$$row[2]</h2>
-                        <h2>$row[3]</h2>
-                        <p>UPC - $row[4]</p>
-                        <button class='see-more-btn'>See more</button>
+                while ($row = mysqli_fetch_assoc($query_result)) {
+                    echo "<form action='' method='post'>
+                    <div class='item-container'>
+                    <input type='hidden' name='item_id' value='.$row[ID]'>
+                        <img src='$row[item_image]'>
+                        <h1>$row[item_name]</h1>
+                        <h2>$$row[item_price]</h2>
+                        <h2>$row[item_manufacturer]</h2>
+                        <p>UPC - $row[item_upc]</p>
+                        <button type='button' class='see-more-btn'>See more</button>
                         <button class='add-cart-btn'>Add to cart</button>
-                        <p class='item-description'>$row[6]</p>
-                        </div>";
+                        <p class='item-description'>$row[item_description]</p>
+                        </div>
+                        </form>
+                        ";
                 }
             }
             ?>
