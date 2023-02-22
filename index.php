@@ -6,15 +6,13 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = array($added_item);
     } else {
-        if(!in_array($added_item, $_SESSION['cart'])) {
+        if (!in_array($added_item, $_SESSION['cart'])) {
             array_push($_SESSION['cart'], $added_item);
         } else {
             echo "Item already added to cart";
         }
     }
 }
-
-
 
 ?>
 
@@ -61,7 +59,7 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
                     </div>
                 </form>
             </li>
-            <li class="navbar-item"><a href="cart.php"><img src="https://www.allphptricks.com/demo/2018/july/simple-shopping-cart-php/cart-icon.png"><?php if(isset($_SESSION['cart'])) echo count($_SESSION['cart']) ?></a></li>
+            <li class="navbar-item"><a href="cart.php"><img src="https://www.allphptricks.com/demo/2018/july/simple-shopping-cart-php/cart-icon.png"><?php if (isset($_SESSION['cart'])) echo count($_SESSION['cart']) ?></a></li>
         </ul>
     </nav>
     <main>
@@ -75,38 +73,39 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
                 $statement = "SELECT * FROM items WHERE item_name LIKE '%$desired_item%'";
                 $query_result = mysqli_query($con, $statement);
                 while ($row = mysqli_fetch_assoc($query_result)) {
-                    echo "<form action='' method='post'>
+                    echo "
                     <div class='item-container'>
-                    <input type='hidden' name='item_id' value='.$row[ID]'>
-                        <img src='$row[item_image]'>
-                        <h1>$row[item_name]</h1>
-                        <h2>$$row[item_price]</h2>
-                        <h2>$row[item_manufacturer]</h2>
-                        <p>UPC - $row[item_upc]</p>
-                        <button type='button' class='see-more-btn'>See more</button>
-                        <button class='add-cart-btn'>Add to cart</button>
-                        <p class='item-description'>$row[item_description]</p>
-                        </div>
-                        </form>";
+                        <form action='' method='post'>
+                            <input type='hidden' name='item_id' value='.$row[ID]'>
+                            <img src='$row[item_image]'>
+                            <h1>$row[item_name]</h1>
+                            <h2>$$row[item_price]</h2>
+                            <h2>$row[item_manufacturer]</h2>
+                            <p>UPC - $row[item_upc]</p>
+                            <button type='button' class='see-more-btn'>See more</button>
+                            <button class='add-cart-btn'>Add to cart</button>
+                            <p class='item-description'>$row[item_description]</p>
+                            </form>
+                        </div>";
                 }
             } else {
                 $statement = "SELECT * FROM items";
                 $query_result = mysqli_query($con, $statement);
                 while ($row = mysqli_fetch_assoc($query_result)) {
-                    echo "<form action='' method='post'>
+                    echo "
                     <div class='item-container'>
-                    <input type='hidden' name='item_id' value='.$row[ID]'>
-                        <img src='$row[item_image]'>
-                        <h1>$row[item_name]</h1>
-                        <h2>$$row[item_price]</h2>
-                        <h2>$row[item_manufacturer]</h2>
-                        <p>UPC - $row[item_upc]</p>
-                        <button type='button' class='see-more-btn'>See more</button>
-                        <button class='add-cart-btn'>Add to cart</button>
-                        <p class='item-description'>$row[item_description]</p>
-                        </div>
-                        </form>
-                        ";
+                        <form action='' method='post'>
+                            <input type='hidden' name='item_id' value='.$row[ID]'>
+                            <img src='$row[item_image]'>
+                            <h1>$row[item_name]</h1>
+                            <h2>$$row[item_price]</h2>
+                            <h2>$row[item_manufacturer]</h2>
+                            <p>UPC - $row[item_upc]</p>
+                            <button type='button' class='see-more-btn'>See more</button>
+                            <button class='add-cart-btn'>Add to cart</button>
+                            <p class='item-description'>$row[item_description]</p>
+                            </form>
+                        </div>";
                 }
             }
             ?>
