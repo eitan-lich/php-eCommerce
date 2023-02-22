@@ -3,6 +3,11 @@ require "database.php";
 
 $con = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DB);
 
+if (isset($_SESSION['cart'], $_POST['item_id'])) {
+    $item_to_remove = $_POST['item_id'];
+    unset($_SESSION['cart'][array_search($item_to_remove, $_SESSION['cart'])]);
+}
+
 
 ?>
 
@@ -52,29 +57,42 @@ $con = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DB);
             <li class="navbar-item"><a href=""><img src="https://www.allphptricks.com/demo/2018/july/simple-shopping-cart-php/cart-icon.png"><?php echo count($_SESSION['cart']) ?></a></li>
         </ul>
     </nav>
-    <main>
+    <main id='cart-main'>
         <?php
-             if (!empty($_SESSION['cart'])) {
-                $cart_array = $_SESSION["cart"];
-                foreach($cart_array as $item_id) {
-                    $item_id = substr($item_id, 1);
-                    $statement = "SELECT * FROM items WHERE ID = '$item_id'";
-                    $query_result = mysqli_query($con, $statement);
-                    $row = mysqli_fetch_assoc($query_result);
-                    echo "<form action='' method='post'>
-                    <div class='cart-container'>
-                    <input type='hidden' name='item_id' value='.$row[ID]'>
+        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+            $cart_array = $_SESSION["cart"];
+            foreach ($cart_array as $item_id) {
+                $item_id = substr($item_id, 1);
+                $statement = "SELECT * FROM items WHERE ID = '$item_id'";
+                $query_result = mysqli_query($con, $statement);
+                $row = mysqli_fetch_assoc($query_result);
+                echo "
+                <div class='cart-container'>
+                    <form action='' method='post'>   
+                        <input type='hidden' name='item_id' value='.$row[ID]'>
                         <img src='$row[item_image]'>
                         <h1>$row[item_name]</h1>
                         <h2>$$row[item_price]</h2>
-                        <h2>$row[item_manufacturer]</h2>
-                        <p>UPC - $row[item_upc]</p>
-                        <button type='button' class='see-more-btn'>Remove</button>
-                        </div>
-                        </form>";
-                }
+                        <button>&#10005; Remove</button>
+                    </form>
+                </div>";
             }
+
+            echo "
+                <div class='checkout'>
+                    <form action='checkout.php' method='post'>
+                        <button class='checkout-btn'>Continue to checkout</button>
+                    </form>
+                </div>
+                
+                <div class='clear-cart'>
+                    <form action='clearCart.php' method='post'>
+                        <button class='clear-cart-btn'>Clear cart</button>
+                    </form>
+                </div>";
+        }
         ?>
     </main>
 </body>
+
 </html>
