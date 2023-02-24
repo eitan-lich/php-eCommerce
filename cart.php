@@ -54,7 +54,7 @@ if (isset($_SESSION['cart'], $_POST['item_id'])) {
                     </div>
                 </form>
             </li>
-            <li class="navbar-item"><a href=""><img src="https://www.allphptricks.com/demo/2018/july/simple-shopping-cart-php/cart-icon.png"><?php echo count($_SESSION['cart']) ?></a></li>
+            <li class="navbar-item"><a href=""><img src="https://www.allphptricks.com/demo/2018/july/simple-shopping-cart-php/cart-icon.png"><?php if (isset($_SESSION['cart'])) echo count($_SESSION['cart']) ?></a></li>
         </ul>
     </nav>
     <main id='cart-main'>
