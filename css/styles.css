@@ -90,6 +90,7 @@ body {
     color:var(--main-text-color);
     padding:15px;
     width:350px;
+    margin:5px;
 }
 
 .item-container img {
@@ -128,6 +129,7 @@ body {
     margin:25px;
     border:1px solid #f96d00;
     padding:5%;
+    width:35%;
 }
 
 
@@ -138,6 +140,7 @@ body {
 
 .auth-form-container {
     display:flex;
+    flex-wrap: wrap;
 }
 
 #add-btn, .auth-form button {

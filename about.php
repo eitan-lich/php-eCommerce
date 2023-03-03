@@ -13,8 +13,7 @@
 </head>
 
 <body>
-    <?php echo "<button id='test'>OK</button>" ?>
-    <script src="script.js"></script>
+    <?php require "header.php";?>
     <?php header("Location:index.php")?>
 </body>
 
