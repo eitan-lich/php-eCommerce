@@ -1,21 +1,39 @@
-let seeMoreBtns = document.querySelectorAll(".see-more-btn");
-let itemDescriptions = document.querySelectorAll(".item-description");
-let cartBtns = document.querySelectorAll(".add-cart-btn");
-let cart = document.getElementById("cart-items");
+$(document).ready(function() {
+
+// Make all item descriptions hidden at first
+    $(".item-description").hide();
+
+// Add an event listener to all buttons to show more info, then only the specific button we requested will show its item description
+    $(".see-more-btn").click(function() {
+        $(this).siblings("p.item-description").toggle();    
+    });
 
 
+// Adding items to cart
+    $(".add-cart-btn").click(function() {
+        let num = $(this).siblings("[name='item_id']").val()
+        $.post("index.php", {
+            item_id : num.substring(1)
+        }, function() {
+            $.get("index.php", function(data, response) {
+                $("#cart-number").html(".cart-count");
+            })
+        })
+    });
+                
 
-itemDescriptions.forEach((description=>description.style.display="none"));
+
+// Updating the cart count real time
 
 
-for(let i=0;i<itemDescriptions.length;i++) {
-    seeMoreBtns[i].addEventListener("click", () => {
-        if(itemDescriptions[i].style.display === "none") {
-            seeMoreBtns[i].innerHTML = "Show less";
-            itemDescriptions[i].style.display = "block";
-        } else {
-            seeMoreBtns[i].innerHTML ="Show more";
-            itemDescriptions[i].style.display = "none";
-        }
+// Removing item from cart
+    $(".remove-btn").click(function() {
+        let num = $(this).siblings("[name='item_id']").val()
+        var el = $(this);
+        $.post("cart.php", {
+            item_id : num.substring(1)
+        }, function() {
+          $(el).parent().remove();
+        });
     })
-};
+});

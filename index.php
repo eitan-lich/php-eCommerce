@@ -15,8 +15,8 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
 }
 
 ?>
-
     <?php require "header.php"?>
+    <body>
     <main>
         <div class="items">
             <?php
@@ -32,6 +32,7 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
                     <div class='item-container'>
                         <form action='' method='post'>
                             <input type='hidden' name='item_id' value='.$row[ID]'>
+                            <input type='hidden' class='cart-count' value='<". count($_SESSION['cart']). ">
                             <img src='$row[item_image]'>
                             <h1>$row[item_name]</h1>
                             <h2>$$row[item_price]</h2>
@@ -49,8 +50,8 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
                 while ($row = mysqli_fetch_assoc($query_result)) {
                     echo "
                     <div class='item-container'>
-                        <form action='' method='post'>
                             <input type='hidden' name='item_id' value='.$row[ID]'>
+                            <input type='hidden' class='cart-count' value='<". count($_SESSION['cart']). ">
                             <img src='$row[item_image]'>
                             <h1>$row[item_name]</h1>
                             <h2>$$row[item_price]</h2>
@@ -59,7 +60,6 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
                             <button type='button' class='see-more-btn'>See more</button>
                             <button class='add-cart-btn'>Add to cart</button>
                             <p class='item-description'>$row[item_description]</p>
-                            </form>
                         </div>";
                 }
             }

@@ -173,7 +173,7 @@ body {
 }
 
 
-.cart-container form {
+.cart-container {
     display:flex;
     justify-content: space-between;
     border: 1px solid rgb(205, 200, 200);
