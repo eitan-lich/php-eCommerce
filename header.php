@@ -39,6 +39,6 @@
                     </div>
                 </form>
             </li>
-            <li class="navbar-item"><a href="cart.php"><img src="https://www.allphptricks.com/demo/2018/july/simple-shopping-cart-php/cart-icon.png"><span id="cart-number">a</span></a></li>
+            <li class="navbar-item"><a href="cart.php"><img src="https://www.allphptricks.com/demo/2018/july/simple-shopping-cart-php/cart-icon.png"><span id="cart-number"><?php echo count($_SESSION['cart'])?></span></a></li>
         </ul>
 </nav>

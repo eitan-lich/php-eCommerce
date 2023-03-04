@@ -1,16 +1,17 @@
 <?php session_start();
 require "database.php";
 
+
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
+
 if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
     $added_item = $_POST['item_id'];
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = array($added_item);
+    if (!in_array($added_item, $_SESSION['cart'])) {
+        array_push($_SESSION['cart'], $added_item);
     } else {
-        if (!in_array($added_item, $_SESSION['cart'])) {
-            array_push($_SESSION['cart'], $added_item);
-        } else {
-            echo "Item already added to cart";
-        }
+        echo "Item already added to cart";
     }
 }
 
@@ -51,7 +52,7 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
                     echo "
                     <div class='item-container'>
                             <input type='hidden' name='item_id' value='.$row[ID]'>
-                            <input type='hidden' class='cart-count' value='<". count($_SESSION['cart']). ">
+                            <input type='hidden' class='cart-count' value='".count($_SESSION['cart'])."'>
                             <img src='$row[item_image]'>
                             <h1>$row[item_name]</h1>
                             <h2>$$row[item_price]</h2>

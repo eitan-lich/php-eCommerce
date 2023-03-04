@@ -15,8 +15,8 @@ $(document).ready(function() {
         $.post("index.php", {
             item_id : num.substring(1)
         }, function() {
-            $.get("index.php", function(data, response) {
-                $("#cart-number").html(".cart-count");
+            $.getJSON("count.php", function(data, response) {
+                $("#cart-number").html(data.count);
             })
         })
     });
@@ -34,6 +34,9 @@ $(document).ready(function() {
             item_id : num.substring(1)
         }, function() {
           $(el).parent().remove();
+          $.getJSON("count.php", function(data, response) {
+            $("#cart-number").html(data.count);
+        })
         });
     })
 });
