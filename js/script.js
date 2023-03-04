@@ -39,4 +39,11 @@ $(document).ready(function() {
         })
         });
     })
+
+    $(".clear-cart-btn").click(function() {
+        $("[name='item_id']").parent().remove();
+        $.post("cart.php", {
+            clear_cart : true
+        })
+    })
 });

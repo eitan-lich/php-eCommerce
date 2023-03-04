@@ -6,7 +6,14 @@ $con = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DB);
 if (isset($_SESSION['cart'], $_POST['item_id'])) {
     $item_to_remove = $_POST['item_id'];
     unset($_SESSION['cart'][array_search($item_to_remove, $_SESSION['cart'])]);
-} ?>
+} 
+
+if(isset($_POST['clear_cart'])) {
+   $_SESSION['cart'] = array();
+}
+
+
+?>
 
     <?php require "header.php"?>
     <body>
@@ -27,19 +34,9 @@ if (isset($_SESSION['cart'], $_POST['item_id'])) {
                         <button class='remove-btn'>&#10005; Remove</button>
                 </div>";
             }
-
             echo "
-                <div class='checkout'>
-                    <form action='checkout.php' method='post'>
-                        <button class='checkout-btn'>Continue to checkout</button>
-                    </form>
-                </div>
-                
-                <div class='clear-cart'>
-                    <form action='clearCart.php' method='post'>
-                        <button class='clear-cart-btn'>Clear cart</button>
-                    </form>
-                </div>";
+            <button class='checkout-btn'>Continue to checkout</button>
+            <button class='clear-cart-btn'>Clear cart</button>";
         }
         ?>
     </main>

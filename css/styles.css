@@ -97,7 +97,7 @@ body {
     width: 50%;
 }
 
-.item-container button {
+.item-container button, .clear-cart-btn, .checkout-btn {
     cursor:pointer;
     border:none;
     text-transform: uppercase;
@@ -107,19 +107,19 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.see-more-btn {
+.see-more-btn, .clear-cart-btn {
     background-color:  #3498db;
 }
 
-.see-more-btn:hover {
+.see-more-btn:hover, .clear-cart-btn:hover {
     background-color: #2980b9;
 }
 
-.add-cart-btn {
+.add-cart-btn, .checkout-btn {
     background-color: #2ecc71;
 }
 
-.add-cart-btn:hover {
+.add-cart-btn:hover, .checkout-btn:hover {
     background-color: #27ae60;
 }
 
@@ -175,13 +175,14 @@ body {
 
 .cart-container {
     display:flex;
+    flex-wrap:wrap;
     justify-content: space-between;
     border: 1px solid rgb(205, 200, 200);
     color:var(--main-text-color);
     font-size: 0.8em;
     padding:1em;
     margin:0.5em;
-    width:700px;
+    width:30%;
 }
 
 
@@ -195,13 +196,15 @@ body {
     border:none;
     text-transform: uppercase;
     border:none;
-    width:10%;
     background:none;
     color:var(--main-text-color);
     font-weight: 500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.clear-cart {
+    width:100%;
+}
 
 
 
