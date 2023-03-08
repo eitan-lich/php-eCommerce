@@ -6,7 +6,7 @@ require "database.php" ?>
 
 <body>
     <div class="auth-form-container">
-        <form class="auth-form" action="signup.php" method="POST">
+        <form class="auth-form" id="signup" action="authenticate.php" method="POST">
             <h1>First time here? no problem we'll set you up in a second</h1>
             <label>
                 Username
@@ -18,7 +18,7 @@ require "database.php" ?>
             <button>Sign up</button>
         </form>
 
-        <form class="auth-form" action="signin.php" method="POST">
+        <form class="auth-form" id="signin" action="authenticate.php" method="POST">
             <h1>Already have an account?</h1>
             <label>
                 Username
@@ -30,6 +30,9 @@ require "database.php" ?>
             <button>Login</button>
         </form>
     </div>
+    <div id="login-error" title="Login Error">Your username or password is wrong</div>
+    <div id="signup-error" title="Signup Error">Try again with a different username/password</div>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
