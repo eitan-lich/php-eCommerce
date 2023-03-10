@@ -1,1 +1,1 @@
-# An eCommerce website built using PHP and HTML/CSS/Jquery
+# An eCommerce website built using PHP and HTML/CSS/Javascript/Jquery
