@@ -30,8 +30,6 @@ require "database.php" ?>
             <button>Login</button>
         </form>
     </div>
-    <div id="login-error" title="Login Error">Your username or password is wrong</div>
-    <div id="signup-error" title="Signup Error">Try again with a different username/password</div>
     <script src="js/script.js"></script>
 </body>
 

@@ -1,7 +1,7 @@
 :root {
     --main-text-color:#40514E;
     --navbar-bg-color:#edf1f4;
-    --navbar-li-hover:rgb(68, 177, 255);
+    --navbar-li-hover:#ff4321;
 }
 
 
@@ -9,7 +9,7 @@ body {
     font-family: 'Roboto', sans-serif;
     color: var(--main-text-color); 
     margin:0;
-
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
 }
 
 .navbar {
@@ -18,26 +18,30 @@ body {
     flex-wrap: wrap;
     list-style-type: none;
     background-color: var(--navbar-bg-color);
-    padding:10px;
-    padding-top: 25px;
+    padding:10px 10vw;
     margin:0;
+    box-shadow:2px 9px 49px -17px rgba(0,0,0,0.3);
 }
 
 .navbar-item a {
     text-decoration: none;
-    cursor: pointer;
     color: var(--main-text-color);
-    margin:10px;
     font-size: 25px;
     font-weight: 700;
-    transition: color 0.5s;
 }
 
-.navbar-item a:hover {
-    color:var(--navbar-li-hover);
+
+.navbar-item {
+    cursor: pointer;
 }
 
-#search-bar, .auth-form input {
+
+.navbar-item:hover {
+    background-color: #e1dcdc;
+}
+
+
+.auth-form input {
     border: 0;
     border-bottom: 2px solid #9b9b9b;
     color: var(--main-text-color);
@@ -54,20 +58,32 @@ body {
 }
 
 
+#search-bar {
+    border: 2px solid #9b9b9b;
+    border-radius: 10px;
+    color: var(--main-text-color);
+    background: transparent;
+    outline: 0;
+    font-size: 20px;
+    cursor: text;
+    transition: border-color 0.2s;
+}
+
 .wrapper-search {
     position: relative;
 }
 
 #search-button {
+    position: absolute;
     top:0;
     right:0;
     color: #fff;
-    border: 2px solid;
+    border: 2px solid #9b9b9b;
+    border-radius: 10px;
     cursor: pointer;
     height: 30px;
     outline: none;
     padding: 0 25px;
-    position: absolute;
     background: #0b6bb6;
     border-color: #0b6bb6;
     transition: background-color 0.5s, border-color 0.5s;
@@ -91,6 +107,7 @@ body {
     padding:15px;
     width:350px;
     margin:5px;
+    box-shadow:2px 9px 25px -17px rgba(0,0,0,0.3);
 }
 
 .item-container img {

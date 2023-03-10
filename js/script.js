@@ -22,11 +22,8 @@ $(document).ready(function() {
     });
                 
 
+// Removing item from cart and update the cart count 
 
-// Updating the cart count real time
-
-
-// Removing item from cart
     $(".remove-btn").click(function() {
         let num = $(this).siblings("[name='item_id']").val()
         var el = $(this);
@@ -39,6 +36,8 @@ $(document).ready(function() {
         })
         });
     })
+
+// Clear cart button deleting all items from cart
 
     $(".clear-cart-btn").click(function() {
         $("[name='item_id']").parent().remove();

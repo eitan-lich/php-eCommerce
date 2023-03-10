@@ -17,7 +17,6 @@
 <nav>
         <ul class="navbar">
             <li class="navbar-item"><a href="index.php">Home</a></li>
-            <li class="navbar-item"><a href="about.php">About</a></li>
             <li class="navbar-item">
                 <?php
                 if (isset($_SESSION["logged-in"]) && $_SESSION["logged-in"] == true) {
@@ -28,7 +27,7 @@
                     echo "<a href='login.php'>Login/Register</a></li>
                     <li class='navbar-item'><a href='#'>Welcome back <span style='text-decoration:underline;'>Guest</span></li></a>";
                 } ?>
-
+            </li>
             <li>
                 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="GET">
                     <div class="wrapper-search">
