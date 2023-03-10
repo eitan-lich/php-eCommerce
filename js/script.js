@@ -47,4 +47,5 @@ $(document).ready(function() {
             clear_cart : true
         })
     })
+
 });

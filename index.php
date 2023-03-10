@@ -15,10 +15,25 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
     }
 }
 
+$sort = 'asc';
+
+if(isset($_GET['sort'])) {
+    $sort = $_GET['sort'];
+}
+
 ?>
     <?php require "header.php"?>
     <body>
     <main>
+        <form id="order" action="" method="GET">
+            <label for="order-by">Order By</label>
+            <select name="sort" id="order-by" onchange="this.form.submit()">
+                <option selected>--Select sort--</option>
+                <option value="asc">Price ascending</option>
+                <option value="desc">Price descending</option>
+            </select>
+        </form>
+
         <div class="items">
             <?php
 
@@ -26,7 +41,7 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
 
             if (!empty($_GET['item'])) {
                 $desired_item = $_GET["item"];
-                $statement = "SELECT * FROM items WHERE item_name LIKE '%$desired_item%'";
+                $statement = "SELECT * FROM items WHERE item_name LIKE '%$desired_item%' ORDER BY item_price $sort";
                 $query_result = mysqli_query($con, $statement);
                 while ($row = mysqli_fetch_assoc($query_result)) {
                     echo "
@@ -46,7 +61,7 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
                         </div>";
                 }
             } else {
-                $statement = "SELECT * FROM items";
+                $statement = "SELECT * FROM items ORDER BY item_price $sort";
                 $query_result = mysqli_query($con, $statement);
                 while ($row = mysqli_fetch_assoc($query_result)) {
                     echo "
